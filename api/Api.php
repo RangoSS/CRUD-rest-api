@@ -30,12 +30,36 @@ function fetch_all(){
 	//print_r($data);
 	return $data;
 }
+function insert(){
+	$form_data=array(
+			':medicine' => $_POST['medicine'],
+			':quantity' => $_POST['quantitys']
+		);
+
+	$query="INSERT INTO purchase(medicine,P_quantity)
+	                      VALUES(':medicine',':quantity')";
+
+  $postData=$this->queryConn($query);
+  if($postData){
+  	$data[]=array(
+  		'success' => '1'
+  	);
+  }
+  else{
+  	$data[]=array(
+  		'success' => '0'
+  	);
+  }
+  
+  return $data;
+}
 
 }
 
 
-/*
-$showm=new API();
-$showm->fetch_all();
-*/
+
+
+
+
+
 ?>
